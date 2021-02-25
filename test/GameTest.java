@@ -1,5 +1,3 @@
-
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -14,7 +12,7 @@ import org.opentest4j.AssertionFailedError;
 
 
 
-/** 
+/**
  *  You can use this file (and others) to array your
  *  implementation.
  */
@@ -49,7 +47,7 @@ public class GameTest {
             assertEquals(2, game.getBoard()[0][0]);
         }
     }
-    
+
     @Test
     public void shiftLeftCollision() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -61,7 +59,7 @@ public class GameTest {
         assertEquals(8, score);
         assertEquals(8, array[0][0]);
     }
-    
+
     @Test
     public void shiftLeftNoCollision() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -74,7 +72,7 @@ public class GameTest {
         assertEquals(2, array[0][0]);
         assertEquals(2, array[0][1]);
     }
-    
+
     @Test
     public void shiftLeftMultipleCollisions() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -92,7 +90,7 @@ public class GameTest {
         assertEquals(4, array[0][1]);
         assertEquals(16, array[0][3]);
     }
-    
+
     @Test
     public void shiftManyLeftNoCollisions() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -111,7 +109,7 @@ public class GameTest {
         assertEquals(16, array[0][3]);
         assertEquals(32, array[1][3]);
     }
-    
+
     @Test
     public void shiftLeftNoMoves() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -128,7 +126,7 @@ public class GameTest {
         assertEquals(2, array[0][2]);
         assertEquals(2, array[0][3]);
     }
-    
+
     @Test
     public void shiftLeftNoDoubleCollision() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -143,8 +141,8 @@ public class GameTest {
         assertEquals(8, array[0][0]);
         assertEquals(8, array[1][0]);
     }
-    
-    
+
+
     @Test
     public void shiftLeftTwoAdjacentIdenticalPairsCollisions() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -159,8 +157,8 @@ public class GameTest {
         assertEquals(8, array[0][0]);
         assertEquals(8, array[1][0]);
     }
-    
-    
+
+
     @Test
     public void gameOverReturnsTrue() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -184,7 +182,7 @@ public class GameTest {
         game.setBoard(array);
         assertTrue(game.gameOver());
     }
-    
+
     @Test
     public void gameOverReturnsFalseContainsBlank() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -208,7 +206,7 @@ public class GameTest {
         game.setBoard(array);
         assertFalse(game.gameOver());
     }
-    
+
     @Test
     public void gameOverReturnsFalseAdjacentMatch() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -232,7 +230,7 @@ public class GameTest {
         game.setBoard(array);
         assertFalse(game.gameOver());
     }
-    
+
     @Test
     public void undoDoesNothing() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -243,7 +241,7 @@ public class GameTest {
         game.undo();
         assertArrayEquals(array, game.getBoard());
     }
-    
+
     @Test
     public void contains2048ReturnsTrue() {
         TwentyFortyEight game = new TwentyFortyEight();
@@ -252,7 +250,7 @@ public class GameTest {
         game.setBoard(array);
         assertTrue(game.contains2048());
     }
-    
+
     @Test
     public void contains2048ReturnsFalse() {
         TwentyFortyEight game = new TwentyFortyEight();
