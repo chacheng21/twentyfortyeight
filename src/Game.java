@@ -1,9 +1,3 @@
-/**
- * CIS 120 Game HW
- * (c) University of Pennsylvania
- * @version 2.1, Apr 2017
- */
-
 // imports necessary libraries for Java swing
 import java.awt.*;
 import java.awt.event.*;
@@ -27,21 +21,21 @@ public class Game implements Runnable {
         final JPanel status_panel = new JPanel();
         frame.add(status_panel, BorderLayout.SOUTH);
         final JLabel status = new JLabel("Running...");
-        
+
         // Scoreboard panel
         final JLabel showScore = new JLabel("0");
-        
+
         // Moves panel
         final JLabel showMoves = new JLabel("0");
-        
-        
+
+
         // Asks user whether to load progress
         int choice = JOptionPane.showConfirmDialog(frame, "Do you want to load your progress");
         int[][] gameBoard = new int[4][4];
         int score = 0;
         int moves = 0;
         boolean loadGame = false;
-        
+
         if (choice == JOptionPane.YES_OPTION) {
             try {
                 loadGame = true;
@@ -50,21 +44,21 @@ public class Game implements Runnable {
                 score = Integer.parseInt(line);
                 line = read.readLine();
                 moves = Integer.parseInt(line);
-                
-                
+
+
                 for (int i = 0; i < 4; i++) {
                     for (int j = 0; j < 4; j++) {
                         line = read.readLine();
                         gameBoard[i][j] = Integer.parseInt(line);
                     }
                 }
-                
+
                 read.close();
             } catch (IOException e) {
                 System.out.println("Encountered IO Exception");
             }
         }
-        
+
         // Checks for highest scores and lowest moves
         int highestScore = 0;
         int lowestMoves = 0;
@@ -78,7 +72,7 @@ public class Game implements Runnable {
         } catch (IOException e) {
             System.out.println("Encountered IO Exception");
         }
-        
+
         // Instructions
         final String INSTRUCTIONS = "This game is called 2048 - a tile game"
                 + "where the aim is to shift the tiles to combine like tiles and \n"
@@ -96,11 +90,11 @@ public class Game implements Runnable {
                 + "I added the undo feature which allows users to access previous moves if a \n"
                 + "mistake is made or if there \n"
                 + "is an unlucky spawn of a tile";
-        JOptionPane.showMessageDialog(frame, INSTRUCTIONS, "Instructions:", 
+        JOptionPane.showMessageDialog(frame, INSTRUCTIONS, "Instructions:",
                 JOptionPane.PLAIN_MESSAGE);
 
         // Main playing area
-        final GameCourt court = new GameCourt(status, showScore, showMoves, score, moves, 
+        final GameCourt court = new GameCourt(status, showScore, showMoves, score, moves,
                 loadGame, gameBoard, highestScore, lowestMoves, frame);
         frame.add(court, BorderLayout.CENTER);
 
@@ -117,24 +111,24 @@ public class Game implements Runnable {
                 court.reset();
             }
         });
-        
+
         final JButton showHighScore = new JButton("PBs");
         showHighScore.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, court.showHighScores(), "Personal Bests:", 
+                JOptionPane.showMessageDialog(frame, court.showHighScores(), "Personal Bests:",
                         JOptionPane.PLAIN_MESSAGE);
                 court.resume();
             }
         });
-        
-        
+
+
         final JButton undo = new JButton("Undo");
         undo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 court.undo();
             }
         });
-        
+
         control_panel.add(showScore);
         control_panel.add(reset);
         control_panel.add(showHighScore);
