@@ -16,5 +16,8 @@ Java Features Implemented:
 3. File I/O
 4. JUnit Testing
 
-Run the Game: \
-Run Game.java to run the game. 
+Run the Game: 
+```
+cd src
+Java Game.java
+```
